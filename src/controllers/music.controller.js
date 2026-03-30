@@ -88,14 +88,15 @@ async function createAlbum(req, res) {
             return res.status(500).json({ message: "File upload failed" });
         }
 
-        const music = await musicModel.create({ title, artist: id, uri: result.url });
+        const album = await albumModel.create({ title, artist: id, musics: music._id });
 
         return res.status(201).json({
-            message: "Music created successfully", music: {
-                title: music.title,
-                artist: music.artist,
-                uri: music.uri,
-                _id: music._id,
+            message: "Album created successfully",
+            album: {
+                title: album.title,
+                artist: album.artist,
+                musics: album.musics,
+                _id: album._id,
             }
         });
     } catch (error) {
