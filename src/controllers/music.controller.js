@@ -62,10 +62,13 @@ async function createAlbum(req, res) {
         }
 
         const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+
         if (!decodedToken) {
             return res.status(401).json({ message: "Unauthorized" });
         }
+
         const { id, role } = decodedToken;
+
         if (role !== "artist") {
             return res.status(403).json({ message: "Forbidden" });
         }
@@ -104,4 +107,4 @@ async function createAlbum(req, res) {
         return res.status(500).json({ message: "Internal server error", error: error.message });
     }
 }
-module.exports = { createMusic };
+module.exports = { createMusic, createAlbum };
