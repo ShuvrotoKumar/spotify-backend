@@ -10,6 +10,5 @@ app.use(cookieParser());
 app.use(fileUpload());
 
 
-app.use("/api/v1", authRoute);
-app.use("/api/v1", musicRoute);
+app.use("/api/v1", authRoute, musicRoute);
 module.exports = app;
