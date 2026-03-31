@@ -68,7 +68,6 @@ async function createAlbum(req, res) {
         return res.status(500).json({ message: "Internal server error", error: error.message });
     }
 }
-
 async function getAllMusic(req, res) {
     try {
         const musics = await musicModel.find();
@@ -79,3 +78,4 @@ async function getAllMusic(req, res) {
     }
 }
 module.exports = { createMusic, createAlbum, getAllMusic };
+
