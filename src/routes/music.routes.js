@@ -8,6 +8,6 @@ router.post("/create-music", protectRoute, artistOnly, musicController.createMus
 
 router.post("/create-album", protectRoute, artistOnly, musicController.createAlbum);
 
-router.get("/get-all-music", musicController.getAllMusic);
+router.get("/get-all-music", protectRoute, artistOnly, musicController.getAllMusic);
 
 module.exports = router;
