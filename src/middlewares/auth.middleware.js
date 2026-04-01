@@ -22,4 +22,11 @@ const artistOnly = (req, res, next) => {
     next();
 };
 
-module.exports = { protectRoute, artistOnly };
+const userOnly = (req, res, next) => {
+    if (!req.user || req.user.role !== "user") {
+        return res.status(403).json({ message: "Forbidden" });
+    }
+    next();
+};
+
+module.exports = { protectRoute, artistOnly, userOnly };
