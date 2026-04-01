@@ -1,6 +1,6 @@
 const express = require("express");
 const musicController = require("../controllers/music.controller");
-const { protectRoute, artistOnly } = require("../middlewares/auth.middleware");
+const { protectRoute, artistOnly, userOnly } = require("../middlewares/auth.middleware");
 
 const router = express.Router();
 
