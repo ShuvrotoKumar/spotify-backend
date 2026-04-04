@@ -70,7 +70,7 @@ async function createAlbum(req, res) {
 }
 async function getAllMusic(req, res) {
     try {
-        const musics = await musicModel.find().populate("artist", "username email") ;
+        const musics = await musicModel.find().populate("artist", "username email");
         return res.status(200).json({ message: "All music fetched successfully", musics: musics });
     } catch (error) {
         console.error("Error getting all music:", error);
@@ -80,7 +80,7 @@ async function getAllMusic(req, res) {
 
 async function getAllAlbums(req, res) {
     try {
-        const albums = await albumModel.find().populate("artist", "username email");
+        const albums = await albumModel.find().select("title artist").populate("artist", "username email");
         return res.status(200).json({ message: "All albums fetched successfully", albums: albums });
     } catch (error) {
         console.error("Error getting all albums:", error);
@@ -88,4 +88,3 @@ async function getAllAlbums(req, res) {
     }
 }
 module.exports = { createMusic, createAlbum, getAllMusic, getAllAlbums };
-    
