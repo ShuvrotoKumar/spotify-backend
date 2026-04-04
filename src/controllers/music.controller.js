@@ -87,4 +87,14 @@ async function getAllAlbums(req, res) {
         return res.status(500).json({ message: "Internal server error", error: error.message });
     }
 }
-module.exports = { createMusic, createAlbum, getAllMusic, getAllAlbums };
+async function getAlbumById(req, res) {
+    try {
+        const { id } = req.params;
+        const album = await albumModel.findById(id).populate("artist", "username email");
+        return res.status(200).json({ message: "Album fetched successfully", album: album });
+    } catch (error) {
+        console.error("Error getting album by ID:", error);
+        return res.status(500).json({ message: "Internal server error", error: error.message });
+    }
+}
+module.exports = { createMusic, createAlbum, getAllMusic, getAllAlbums, getAlbumById };

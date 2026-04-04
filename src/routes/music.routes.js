@@ -11,4 +11,6 @@ router.post("/create-album", protectRoute, artistOnly, musicController.createAlb
 router.get("/get-all-music", protectRoute, userOnly, musicController.getAllMusic);
 
 router.get("/get-all-albums", protectRoute, userOnly, musicController.getAllAlbums);
+
+router.get("/get-album/:id", protectRoute, userOnly, musicController.getAlbumById);
 module.exports = router;
