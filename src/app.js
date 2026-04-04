@@ -1,7 +1,7 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
-const authRoute = require("./routes/auth.route");
+const authRoute = require("./routes/auth.routes");
 const musicRoute = require("./routes/music.routes");
 const userRoute = require("./routes/user.route");
 
